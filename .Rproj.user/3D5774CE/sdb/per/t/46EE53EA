@@ -1,0 +1,18 @@
+{
+    "contents" : "# Canadian Historical Weather Data\n\n\n# for year in `seq 1998 2008`;do for month in `seq 1 12`;do wget --content-disposition \"http://climat.weather.gc.ca/climateData/bulkdata_e.html?format=csv&stationID=1706&Year=${year}&Month=${month}&Day=14&timeframe=1&submit= Download+Data\" ;done;done\n# \n# WHERE; \n# •\tyear = change values in command line (‘seq 1998 2008)\n# •\tmonth = change values in command line (‘seq 1 12)\n# •\tformat= [csv|xml]: the format output\n# •\ttimeframe = 1: for hourly data \n# •\ttimeframe = 2: for daily data \n# •\ttimeframe = 3 for monthly data \n# •\tDay: the value of the \"day\" variable is not used and can be an arbitrary value \n# •\tFor another station, change the value of the variable stationID\n# •\tFor the data in XML format, change the value of the variable format to xml in the URL. \n# \n\nrequire(curl)\nrequire(readr)\nrequire(plyr)\n\n# Download datasets. Environment Canada historical data available by month.\n\n\n# For the station, I'm using Vancouver Harbour (around Deadman's Island in Coal Harbour. YVR INTL AIRPORT has a data break around June 2013 - use at caution).\n\nstationID <- \"888\"\n\nfor (i in 1:21) {\n  year <- 1994 + i \n  year <- as.character(year)\n  query <- paste0(\"http://climate.weather.gc.ca/climateData/bulkdata_e.html?format=csv&stationID=\",stationID,\"&Year=\",year,\"&Month=1&Day=14&timeframe=2&submit=Download+Data\")\n  writableOutput <- paste0(stationID,\"_\",year,\".csv\")\n  curl_download(query, writableOutput)\n}\n\n# The Environment Canada data is not nicely parsed and contains descriptions in the top rows. The number of rows to skip requires a little bit of trial and error, but it looks like 27 for day/month data, 18 for month/year data, and 16 for hourly/daily.\n\nannual <- c()\n\nfor (j in 1:21)  { \n  tmp <- read_csv(dir()[j], col_names = FALSE, n_max = 50)\n  startingRow <- as.numeric(row.names(tmp[tmp[,1]==\"Date/Time\",])[3])\n  annual[[j]] <- as.data.frame(read_csv(dir()[j], col_names = TRUE, skip = startingRow-1))\n}\nannual <- rbind.fill(annual)\n\n",
+    "created" : 1448926106013.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2723069411",
+    "id" : "46EE53EA",
+    "lastKnownWriteTime" : 1448933595,
+    "path" : "~/Documents/yvr_weather/assemble.R",
+    "project_path" : "assemble.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

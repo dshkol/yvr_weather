@@ -1,0 +1,25 @@
+{
+    "contents" : "",
+    "created" : 1448992504088.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "345D023F",
+    "lastKnownWriteTime" : 8101746182669820416,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "ud90uslmfe",
+        "caption" : "accidents",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=accidents&cache_key=ud90uslmfe",
+        "displayedObservations" : 30196,
+        "environment" : "",
+        "object" : "accidents",
+        "totalObservations" : 30196,
+        "variables" : 47
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

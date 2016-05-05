@@ -1,0 +1,25 @@
+{
+    "contents" : "",
+    "created" : 1448946962034.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "4BA36BE7",
+    "lastKnownWriteTime" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "p9z3dl7n2n",
+        "caption" : "annual2",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=annual2&cache_key=p9z3dl7n2n",
+        "displayedObservations" : 365,
+        "environment" : "",
+        "object" : "annual2",
+        "totalObservations" : 365,
+        "variables" : 27
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}
